@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Mission2 | Swipe + Tab</title>
+	<link rel="stylesheet" href="css/skt_style.css">
+	<script src="src/jquery-1.11.3.min.js"></script>
+	<script src="src/swipe.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="inner">
+			<h1 class="logo"><a href="#"><img src="images/skt_logo.png" alt=""></a></h1>
+			<div class="nav">
+				<ul class="fl">
+					<li class="on"><a href="#">faker</a></li>
+					<li><a href="#">duke</a></li>
+					<li><a href="#">bengi</a></li>
+					<li><a href="#">blank</a></li>
+					<li><a href="#">bang</a></li>
+					<li><a href="#">wolf</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="inner">
+			<div class="sec sec1">
+				
+				<div id='sktt1' class='swipe'>
+					<div class='swipe-wrap'>
+						<div><img src="images/faker.png" alt=""></div>
+						<div><img src="images/duke.png" alt=""></div>
+						<div><img src="images/bengi.png" alt=""></div>
+						<div><img src="images/blank.png" alt=""></div>
+						<div><img src="images/bang.png" alt=""></div>
+						<div><img src="images/wolf.png" alt=""></div>
+					</div>
+				</div>
+				<div class="control">
+					<a href="#" class="ctl_prev">이전</a>
+					<a href="#" class="ctl_next">다음</a>
+				</div>
+			</div>
+			<div class="sec sec2">
+				<img src="images/winner.jpg" alt="">
+			</div>
+		</div>
+	</div>
+<script>
+var t1=document.getElementById('sktt1');
+$(function(){
+	window.mySwipe = Swipe(t1, {
+		callback: function(index, element) {
+			$('.nav ul li a').eq(index).parent().addClass('on').siblings().removeClass('on');
+		}
+	});
+	$('.nav ul li a').on('click',function() {
+		idx=$('.nav ul li a').index($(this));
+		$(this).parent().addClass('on').siblings().removeClass('on');
+		window.mySwipe.slide(idx,200);
+	});
+	$('.control a').eq(0).on('click',function(){
+		mySwipe.prev();
+	})
+	$('.control a').eq(1).on('click',function(){
+		mySwipe.next();
+	})
+})
+
+
+
+</script>
+</body>
+</html>
